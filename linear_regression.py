@@ -3,9 +3,6 @@ import matplotlib.pyplot as plt
 import sklearn
 from sklearn.linear_model import LinearRegression
 from sklearn.datasets import load_boston
-import mglearn
-
-
 
 boston = load_boston()
 
@@ -39,7 +36,7 @@ print(boston.DESCR)
 
 
 ###################################################################################################
-# Create primary dataframe and assign titles
+# Create dataframe and test / train datasets
 ###################################################################################################
 
 bos = pd.DataFrame(boston.data)    # create a new df called bos
@@ -51,8 +48,8 @@ print(bos.describe())
 # print statistical summary of boston housing dataset
 
 # Divide datasets into output and input datasets
-X = bos.drop('PRICE', axis = 1)   # Predicted value (y_hat)
-Y = bos['PRICE']                  # All x values (x_i)
+X = bos.drop('PRICE', axis = 1)   # Output: Predicted value (y_hat)
+Y = bos['PRICE']                  # Input: All x values (x_i)
 
 # Divide into four main test sub-arrays and print array size
 X_train, X_test, Y_train, Y_test = sklearn.model_selection.train_test_split(X, Y, test_size = 0.33, random_state = 5)
@@ -72,7 +69,6 @@ lm.fit(X_train, Y_train)
 
 
 Y_pred = lm.predict(X_test)
-print(Y_pred)
 
 plt.scatter(Y_test, Y_pred)
 plt.xlabel("Prices: $Y_i$")
@@ -81,16 +77,13 @@ plt.title("Prices vs Predicted prices: $Y_i$ vs $\hat{Y}_i$")
 plt.show()
 
 
+coef_array = (pd.DataFrame({'Name':lm.coef_,'Age':boston.feature_names}))
 
-coefs = pd.DataFrame(lm.coef_.transpose())
-print(coefs.transpose()
-print(boston.feature_names)
-# coefs.columns = boston.feature_names  #todo
 
 
 # print coefficients, intercept, mse and R2 values
 # print("model coefficients: ", coefs, "\n")
-print("Model Intercept: {:.3f}".format(lm.intercept_))
+print("Model Intercepts: ", coef_array, "\n")
 print("Mean Square Error: {:.3f}".format(sklearn.metrics.mean_squared_error(Y_test, Y_pred)))
 print("Training Set Score: {:.3f}".format(lm.score(X_train, Y_train)))
 print("Training Set Score: {:.3f}".format(lm.score(X_test, Y_test)))
