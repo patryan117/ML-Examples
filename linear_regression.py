@@ -1,8 +1,12 @@
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 import sklearn
 from sklearn.linear_model import LinearRegression
 from sklearn.datasets import load_boston
+import plotly.plotly as py
+import plotly.graph_objs as go
+import plotly.offline
 
 boston = load_boston()
 
@@ -75,6 +79,29 @@ plt.xlabel("Prices: $Y_i$")
 plt.ylabel("Predicted prices: $\hat{Y}_i$")
 plt.title("Prices vs Predicted prices: $Y_i$ vs $\hat{Y}_i$")
 plt.show()
+
+
+
+
+
+# Create random data with numpy
+#todo figure out how to print this in Pycharm's scientific mode
+
+N = 1000
+random_x = np.random.randn(N)
+random_y = np.random.randn(N)
+
+# Create a trace
+trace = go.Scatter(
+    x = Y_test,
+    y = Y_pred,
+    mode = 'markers'
+)
+
+data = [trace]
+
+# Plot and embed in ipython notebook!
+plotly.offline.plot(data, filename='basic-scatter')
 
 
 coef_array = (pd.DataFrame({'Name':lm.coef_,'Age':boston.feature_names}))
