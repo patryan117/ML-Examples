@@ -1,22 +1,12 @@
-import numpy as np
 import pandas as pd
-import scipy.stats as stats
 import matplotlib.pyplot as plt
-
 import sklearn
-from sklearn import model_selection
 from sklearn.linear_model import LinearRegression
-
-# import statsmodels.api as sm
-
-import seaborn as sns
-sns.set_style("whitegrid")
-sns.set_context("poster")
-
-# special matplotlib argument for improved plots
-from matplotlib import rcParams
-
 from sklearn.datasets import load_boston
+import mglearn
+
+
+
 boston = load_boston()
 
 print(boston.keys())
@@ -54,7 +44,7 @@ print(boston.DESCR)
 
 bos = pd.DataFrame(boston.data)    # create a new df called bos
 bos.columns = boston.feature_names    # reassign colums names from the boston.features
-bos['PRICE'] = boston.target    # Add price as a new column name
+bos['PRICE'] = boston.target       # Add price as a new column name
 print(bos.head())
 
 print(bos.describe())
@@ -73,12 +63,16 @@ print(Y_test.shape)
 
 
 ######################################################################################################################
+#  Simple Linear Regression
+######################################################################################################################
 
 # assign a linear model to the object "lm"
 lm = LinearRegression()
 lm.fit(X_train, Y_train)
 
+
 Y_pred = lm.predict(X_test)
+print(Y_pred)
 
 plt.scatter(Y_test, Y_pred)
 plt.xlabel("Prices: $Y_i$")
@@ -86,8 +80,19 @@ plt.ylabel("Predicted prices: $\hat{Y}_i$")
 plt.title("Prices vs Predicted prices: $Y_i$ vs $\hat{Y}_i$")
 plt.show()
 
+
+
+coefs = pd.DataFrame(lm.coef_.transpose())
+print(coefs.transpose())
+
+
+print(boston.feature_names)
+coefs.columns = boston.feature_names
+
+
 # print coefficients, intercept, mse and R2 values
-print("model coeffients: ", lm.coef_, "\n")
-print(lm.intercept_)
-mse = sklearn.metrics.mean_squared_error(Y_test, Y_pred)
-print(mse)
+# print("model coefficients: ", coefs, "\n")
+print("Model Intercept: {:.3f}".format(lm.intercept_))
+print("Mean Square Error: {:.3f}".format(sklearn.metrics.mean_squared_error(Y_test, Y_pred)))
+print("Training Set Score: {:.3f}".format(lm.score(X_train, Y_train)))
+print("Training Set Score: {:.3f}".format(lm.score(X_test, Y_test)))
