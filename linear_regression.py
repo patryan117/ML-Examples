@@ -83,11 +83,9 @@ plt.show()
 
 
 coefs = pd.DataFrame(lm.coef_.transpose())
-print(coefs.transpose())
-
-
+print(coefs.transpose()
 print(boston.feature_names)
-coefs.columns = boston.feature_names
+# coefs.columns = boston.feature_names  #todo
 
 
 # print coefficients, intercept, mse and R2 values
