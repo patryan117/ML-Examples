@@ -1,11 +1,14 @@
-import numpy as np
-import pandas as pd
-import re as re
 
 
 ##########################################################################################################
 # EVALUATING MULTIPLE ML MODELS (TITANIC DATASET)
 ##########################################################################################################
+
+# Load libraries:
+import numpy as np
+import pandas as pd
+import re as re  # regular exporessions
+
 
 
 # load test and train datasets (from kaggles.s built in features)
@@ -84,26 +87,40 @@ for dataset in full_data:
     # cast "Age" category to interger
     dataset['Age'] = dataset['Age'].astype(int)
 
-
+# Create new feature of categorical age (only only in the train dataset)
 train['CategoricalAge'] = pd.cut(train['Age'], 5)
 print(train['CategoricalAge'])
 
-# print(train[['CategoricalAge', 'Survived']].groupby(['CategoricalAge'], as_index=False).mean())
-#
-#
-# def get_title(name):
-# 	title_search = re.search(' ([A-Za-z]+)\.', name)
-# 	# If the title exists, extract and return it.
-# 	if title_search:
-# 		return title_search.group(1)
-# 	return ""
-#
-# for dataset in full_data:
-#     dataset['Title'] = dataset['Name'].apply(get_title)
-#
-# print(pd.crosstab(train['Title'], train['Sex']))
-#
-#
+# TODO figure out how this works
+# print a table showing how categorical age influenced the survival outcome
+print(train[['CategoricalAge', 'Survived']].groupby(['CategoricalAge'], as_index=False).mean())
+print("\n")
+
+
+
+
+
+# create a new function to extract title s from a string
+def get_title(name):
+    title_search = re.search(' ([A-Za-z]+)\.', name)
+
+    if title_search:	# If the title exists, extract and return it.
+        return title_search.group(1)
+    else:
+        return ""  # else, return an empty string
+
+for dataset in full_data:
+    dataset['Title'] = dataset['Name'].apply(get_title)
+
+print(pd.crosstab(train['Title'], train['Sex']))
+
+
+
+
+
+
+
+
 # for dataset in full_data:
 #     dataset['Title'] = dataset['Title'].replace(['Lady', 'Countess','Capt', 'Col',\
 #  	'Don', 'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer', 'Dona'], 'Rare')
