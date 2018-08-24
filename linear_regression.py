@@ -39,9 +39,9 @@ print(boston.DESCR)
 
 
 
-###################################################################################################
+#######################################################################################################################
 # Create dataframe and test / train datasets
-###################################################################################################
+#######################################################################################################################
 
 bos = pd.DataFrame(boston.data)    # create a new df called bos
 bos.columns = boston.feature_names    # reassign colums names from the boston.features
@@ -67,13 +67,12 @@ print(Y_test.shape)
 #  Simple Linear Regression
 ######################################################################################################################
 
-# assign a linear model to the object "lm"
+# assign a linear regression model to the object "lm"
 lm = LinearRegression()
 lm.fit(X_train, Y_train)
 
 
 Y_pred = lm.predict(X_test)
-
 plt.scatter(Y_test, Y_pred)
 plt.xlabel("Prices: $Y_i$")
 plt.ylabel("Predicted prices: $\hat{Y}_i$")
@@ -92,16 +91,76 @@ random_x = np.random.randn(N)
 random_y = np.random.randn(N)
 
 # Create a trace
+#todo add names to the output
 trace = go.Scatter(
     x = Y_test,
     y = Y_pred,
     mode = 'markers'
 )
+layout= go.Layout(
+    title= 'Predicted Versus Actual',
+    hovermode= 'closest',
+    xaxis= dict(
+        title= 'Actual',
+        ticklen= 5,
+        zeroline= False,
+        gridwidth= 2,
+    ),
+    yaxis=dict(
+        title= 'Predicted',
+        ticklen= 5,
+        gridwidth= 2,
+    ),
+    showlegend= False
+)
 
 data = [trace]
 
 # Plot and embed in ipython notebook!
-plotly.offline.plot(data, filename='basic-scatter')
+fig= go.Figure(data=data, layout=layout)
+plotly.offline.plot(fig)
+
+
+#
+# l= []
+# y= []
+# data= pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/2014_usa_states.csv")
+# # Setting colors for plot.
+# N= 53
+# c= ['hsl('+str(h)+',50%'+',50%)' for h in np.linspace(0, 360, N)]
+#
+# for i in range(int(N)):
+#     y.append((2000+i))
+#     trace0= go.Scatter(
+#         x= data['Rank'],
+#         y= data['Population']+(i*1000000),
+#         mode= 'markers',
+#         marker= dict(size= 14,
+#                     line= dict(width=1),
+#                     color= c[i],
+#                     opacity= 0.3
+#                    ),name= y[i],
+#         text= data['State']) # The hover text goes here...
+#     l.append(trace0);
+#
+# layout= go.Layout(
+#     title= 'Stats of USA States',
+#     hovermode= 'closest',
+#     xaxis= dict(
+#         title= 'Population',
+#         ticklen= 5,
+#         zeroline= False,
+#         gridwidth= 2,
+#     ),
+#     yaxis=dict(
+#         title= 'Rank',
+#         ticklen= 5,
+#         gridwidth= 2,
+#     ),
+#     showlegend= False
+# )
+# fig= go.Figure(data=l, layout=layout)
+# plotly.offline.plot(fig)
 
 
 coef_array = (pd.DataFrame({'Name':lm.coef_,'Age':boston.feature_names}))
@@ -114,3 +173,12 @@ print("Model Intercepts: ", coef_array, "\n")
 print("Mean Square Error: {:.3f}".format(sklearn.metrics.mean_squared_error(Y_test, Y_pred)))
 print("Training Set Score: {:.3f}".format(lm.score(X_train, Y_train)))
 print("Training Set Score: {:.3f}".format(lm.score(X_test, Y_test)))
+
+
+
+# Notes:
+
+# Linear model has not input parameters, and only minimizes the mean square error
+# Linear models do particularly well on datasets with large features.
+# Therefore this is the best classification that we can do on this model
+# We do not appear to be overfitting (since test R2 is <80%)
