@@ -219,18 +219,22 @@ classifiers = [
     LogisticRegression()]
 
 log_cols = ["Classifier", "Accuracy"]
-log = pd.DataFrame(columns=log_cols)  #TODO what's this?
+log = pd.DataFrame(columns=log_cols)   # create an empty df to populate
 
-# todo, why are we sampling anything?  shouldnt we just be applying the test data set?
+# todo, why are we sampling anything?  shouldn't we just be applying the test data set?
 
 sss = StratifiedShuffleSplit(n_splits=10, test_size=0.1, random_state=0)
 
-X = train[0::, 1::]  #TODO: what's this slicing syntax do?
+
+X = train[0::, 1::]  #TODO: revisit double slicing syntax?
 y = train[0::, 0]
 
-print(X)
+print("X file:", X)
+
 
 acc_dict = {}
+
+#TODO revisit (why are there splits going on if we already have the test file?
 
 for train_index, test_index in sss.split(X, y):
     X_train, X_test = X[train_index], X[test_index]
@@ -238,20 +242,24 @@ for train_index, test_index in sss.split(X, y):
 
     for clf in classifiers:
         name = clf.__class__.__name__  # built-in name eg. (KNeighborsClassifier)
-        clf.fit(X_train, y_train)
-        train_predictions = clf.predict(X_test)
-        acc = accuracy_score(y_test, train_predictions)  #
-        if name in acc_dict:
-            acc_dict[name] += acc
-        else:
-            acc_dict[name] = acc
+        clf.fit(X_train, y_train)  # fit each classifier object
+        train_predictions = clf.predict(X_test)  # predict with each classifier using the X_test files
+        acc = accuracy_score(y_test, train_predictions) #temp value acc to hold the accuray
 
-print(acc_dict)
+        if name in acc_dict:  # if built-in mtches the dictionary name
+            acc_dict[name] += acc  # add accuracy to names value (0 + acc)
+        else:
+            acc_dict[name] = acc  #else accuracy == 0 (right?)
+
+# print(acc_dict)
 
 for clf in acc_dict:
     acc_dict[clf] = acc_dict[clf] / 10.0
     log_entry = pd.DataFrame([[clf, acc_dict[clf]]], columns=log_cols)
-    log = log.append(log_entry)
+    log = log.append(log_entry)  # the actual table that holds the classifier accuracies
+
+
+print(log)
 
 plt.xlabel('Accuracy')
 plt.title('Classifier Accuracy')
