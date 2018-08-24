@@ -173,5 +173,4 @@ print("Training Set Score: {:.3f}".format(lm.score(X_test, Y_test)))
 
 # Linear model has not input parameters, and only minimizes the mean square error
 # Linear models do particularly well on datasets with large features.
-# Therefore this is the best classification that we can do on this model
-# We do not appear to be overfitting (since test R2 is <80%)
+# We do not appear to be overfitting, so a regularized variant like Ridge or Lasso linear regression wont help.
