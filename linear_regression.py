@@ -157,8 +157,12 @@ coef_array = (pd.DataFrame({'Name':lm.coef_,'Age':boston.feature_names}))
 
 
 # print coefficients, intercept, mse and R2 values
-# print("model coefficients: ", coefs, "\n")
-print("Model Intercepts: ", coef_array, "\n")
+
+print("#############################################################################################################")
+print("Simple Linear Regression Test Results")
+print("#############################################################################################################\n\n")
+
+print("Model Intercepts: ", "\n", coef_array)
 print("Mean Square Error: {:.3f}".format(sklearn.metrics.mean_squared_error(Y_test, Y_pred)))
 print("Training Set Score: {:.3f}".format(lm.score(X_train, Y_train)))
 print("Training Set Score: {:.3f}".format(lm.score(X_test, Y_test)))
