@@ -228,6 +228,8 @@ sss = StratifiedShuffleSplit(n_splits=10, test_size=0.1, random_state=0)
 X = train[0::, 1::]  #TODO: what's this slicing syntax do?
 y = train[0::, 0]
 
+print(X)
+
 acc_dict = {}
 
 for train_index, test_index in sss.split(X, y):
@@ -235,7 +237,7 @@ for train_index, test_index in sss.split(X, y):
     y_train, y_test = y[train_index], y[test_index]
 
     for clf in classifiers:
-        name = clf.__class__.__name__  # eg. (KNeighborsClassifier)
+        name = clf.__class__.__name__  # built-in name eg. (KNeighborsClassifier)
         clf.fit(X_train, y_train)
         train_predictions = clf.predict(X_test)
         acc = accuracy_score(y_test, train_predictions)  #
