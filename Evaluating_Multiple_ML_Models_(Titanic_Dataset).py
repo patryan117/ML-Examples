@@ -29,8 +29,8 @@ full_data = [train, test]
 # Create family size feature
 for dataset in full_data:
     dataset['FamilySize'] = dataset['SibSp'] + dataset['Parch'] + 1 # siblings + parents + self
-print (train[['FamilySize', 'Survived']].groupby(['FamilySize'], as_index=False).mean())
-print("\n")
+# print (train[['FamilySize', 'Survived']].groupby(['FamilySize'], as_index=False).mean())
+# print("\n")
 
 # Create a dummy variable for if family member is alone
 for dataset in full_data:
@@ -53,25 +53,42 @@ print("\n")
 for dataset in full_data:
     dataset['Fare'] = dataset['Fare'].fillna(train['Fare'].median())
 train['CategoricalFare'] = pd.qcut(train['Fare'], 4)
-print(train[['CategoricalFare', 'Survived']].groupby(['CategoricalFare'], as_index=False).mean())
+# print(train[['CategoricalFare', 'Survived']].groupby(['CategoricalFare'], as_index=False).mean())
 
 
 #TODO: fix chained indexing
 
-
-#
+# creating features in both the train and test datasets (which are contained in the list full_data
 for dataset in full_data:
+
+    print(dataset)
+
+    # set the mean age to age_avg (29.6991)
     age_avg = dataset['Age'].mean()
+    print(age_avg)
+
+    # set the std of age to age_std (14.1812)
     age_std = dataset['Age'].std()
+
+    # set the number of null values in age to age_null_count
     age_null_count = dataset['Age'].isnull().sum()
 
+    # make a random list of ages ranging within 1 sd from the mean, size equals null count
+    #TODO what the duck?  (why do this instead of applying the mean like we did with age?)
+
     age_null_random_list = np.random.randint(age_avg - age_std, age_avg + age_std, size=age_null_count)
+
+    # Assign the random data list to the NA elements in the "Age" category:
     dataset['Age'][np.isnan(dataset['Age'])] = age_null_random_list
+
+    # cast "Age" category to interger
     dataset['Age'] = dataset['Age'].astype(int)
 
-train['CategoricalAge'] = pd.cut(train['Age'], 5)
 
-print(train[['CategoricalAge', 'Survived']].groupby(['CategoricalAge'], as_index=False).mean())
+train['CategoricalAge'] = pd.cut(train['Age'], 5)
+print(train['CategoricalAge'])
+
+# print(train[['CategoricalAge', 'Survived']].groupby(['CategoricalAge'], as_index=False).mean())
 #
 #
 # def get_title(name):
