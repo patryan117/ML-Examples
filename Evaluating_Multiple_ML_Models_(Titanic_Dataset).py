@@ -8,6 +8,8 @@
 import numpy as np
 import pandas as pd
 import re as re  # regular exporessions
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 
@@ -64,11 +66,9 @@ train['CategoricalFare'] = pd.qcut(train['Fare'], 4)
 # creating features in both the train and test datasets (which are contained in the list full_data
 for dataset in full_data:
 
-    print(dataset)
 
     # set the mean age to age_avg (29.6991)
     age_avg = dataset['Age'].mean()
-    print(age_avg)
 
     # set the std of age to age_std (14.1812)
     age_std = dataset['Age'].std()
@@ -89,46 +89,49 @@ for dataset in full_data:
 
 # Create new feature of categorical age (only only in the train dataset)
 train['CategoricalAge'] = pd.cut(train['Age'], 5)
-print(train['CategoricalAge'])
+# print(train['CategoricalAge'])
 
 # TODO figure out how this works
 # print a table showing how categorical age influenced the survival outcome
-print(train[['CategoricalAge', 'Survived']].groupby(['CategoricalAge'], as_index=False).mean())
+# print(train[['CategoricalAge', 'Survived']].groupby(['CategoricalAge'], as_index=False).mean())
 print("\n")
 
 
 
 
 
-# create a new function to extract title s from a string
+# create a new function to extract title from a string runs that match "xxx. "string
+# group(1) allows us to access the actual string that we are targeting
 def get_title(name):
     title_search = re.search(' ([A-Za-z]+)\.', name)
-
     if title_search:	# If the title exists, extract and return it.
         return title_search.group(1)
     else:
         return ""  # else, return an empty string
 
+#TODO does apply do it one at a time
 for dataset in full_data:
     dataset['Title'] = dataset['Name'].apply(get_title)
 
+# create a cross table to view the frequency of each title within each gender category
 print(pd.crosstab(train['Title'], train['Sex']))
 
 
 
+for dataset in full_data:
+
+    # replace the rare terms with the word "rare" in the title category
+    dataset['Title'] = dataset['Title'].replace(['Lady', 'Countess','Capt', 'Col',\
+ 	'Don', 'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer', 'Dona'], 'Rare')
+
+    # replace the mispelled titles (
+    # correct title can be inferred by gender and table (i.e. Mlle and Mme both corespond to female gendered datapoints)
+    dataset['Title'] = dataset['Title'].replace('Mlle', 'Miss')
+    dataset['Title'] = dataset['Title'].replace('Ms', 'Miss')
+    dataset['Title'] = dataset['Title'].replace('Mme', 'Mrs')
 
 
 
-
-
-# for dataset in full_data:
-#     dataset['Title'] = dataset['Title'].replace(['Lady', 'Countess','Capt', 'Col',\
-#  	'Don', 'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer', 'Dona'], 'Rare')
-#
-#     dataset['Title'] = dataset['Title'].replace('Mlle', 'Miss')
-#     dataset['Title'] = dataset['Title'].replace('Ms', 'Miss')
-#     dataset['Title'] = dataset['Title'].replace('Mme', 'Mrs')
-#
 # print (train[['Title', 'Survived']].groupby(['Title'], as_index=False).mean())
 #
 # for dataset in full_data:
@@ -170,19 +173,18 @@ print(pd.crosstab(train['Title'], train['Sex']))
 # train = train.values
 # test = test.values
 #
-# import matplotlib.pyplot as plt
-# import seaborn as sns
-#
-# from sklearn.model_selection import StratifiedShuffleSplit
-# from sklearn.metrics import accuracy_score, log_loss
-# from sklearn.neighbors import KNeighborsClassifier
-# from sklearn.svm import SVC
-# from sklearn.tree import DecisionTreeClassifier
-# from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, GradientBoostingClassifier
-# from sklearn.naive_bayes import GaussianNB
-# from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
-# from sklearn.linear_model import LogisticRegression
-#
+
+
+from sklearn.model_selection import StratifiedShuffleSplit
+from sklearn.metrics import accuracy_score, log_loss
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, GradientBoostingClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
+from sklearn.linear_model import LogisticRegression
+
 # classifiers = [
 #     KNeighborsClassifier(3),
 #     SVC(probability=True),
