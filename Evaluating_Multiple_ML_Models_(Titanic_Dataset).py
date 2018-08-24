@@ -4,14 +4,19 @@
 # EVALUATING MULTIPLE ML MODELS (TITANIC DATASET)
 ##########################################################################################################
 
+
+
+##########################################################################################################
+# SETUP
+##########################################################################################################
+
+
 # Load libraries:
 import numpy as np
 import pandas as pd
 import re as re  # regular exporessions
 import matplotlib.pyplot as plt
 import seaborn as sns
-
-
 
 # load test and train datasets (from kaggles.s built in features)
 train = pd.read_csv('datasets/train.csv', header = 0, dtype={'Age': np.float64})
@@ -30,6 +35,14 @@ full_data = [train, test]
 # # Taking the sex and survived categories from sample and presenting the mean
 # print (train[["Sex", "Survived"]].groupby(['Sex'], as_index=False).mean())
 # print("\n")
+
+
+##########################################################################################################
+# FEATURE ENGINEERING
+##########################################################################################################
+
+
+
 
 # Create family size feature
 for dataset in full_data:
@@ -121,58 +134,66 @@ print(pd.crosstab(train['Title'], train['Sex']))
 for dataset in full_data:
 
     # replace the rare terms with the word "rare" in the title category
-    dataset['Title'] = dataset['Title'].replace(['Lady', 'Countess','Capt', 'Col',\
+    dataset['Title'] = dataset['Title'].replace(['Lady', 'Countess','Capt', 'Col',
  	'Don', 'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer', 'Dona'], 'Rare')
 
-    # replace the mispelled titles (
+    # replace the mispelled titles
     # correct title can be inferred by gender and table (i.e. Mlle and Mme both corespond to female gendered datapoints)
     dataset['Title'] = dataset['Title'].replace('Mlle', 'Miss')
     dataset['Title'] = dataset['Title'].replace('Ms', 'Miss')
     dataset['Title'] = dataset['Title'].replace('Mme', 'Mrs')
 
 
+#TODO: seperate rare into rare-male and rare-female
+# table showing how title matches to each title
+print(train[['Title', 'Survived']].groupby(['Title'], as_index=False).mean())
 
-# print (train[['Title', 'Survived']].groupby(['Title'], as_index=False).mean())
-#
-# for dataset in full_data:
-#     # Mapping Sex
-#     dataset['Sex'] = dataset['Sex'].map({'female': 0, 'male': 1}).astype(int)
-#
-#     # Mapping titles
-#     title_mapping = {"Mr": 1, "Miss": 2, "Mrs": 3, "Master": 4, "Rare": 5}
-#     dataset['Title'] = dataset['Title'].map(title_mapping)
-#     dataset['Title'] = dataset['Title'].fillna(0)
-#
-#     # Mapping Embarked
-#     dataset['Embarked'] = dataset['Embarked'].map({'S': 0, 'C': 1, 'Q': 2}).astype(int)
-#
-#     # Mapping Fare
-#     dataset.loc[dataset['Fare'] <= 7.91, 'Fare'] = 0
-#     dataset.loc[(dataset['Fare'] > 7.91) & (dataset['Fare'] <= 14.454), 'Fare'] = 1
-#     dataset.loc[(dataset['Fare'] > 14.454) & (dataset['Fare'] <= 31), 'Fare'] = 2
-#     dataset.loc[dataset['Fare'] > 31, 'Fare'] = 3
-#     dataset['Fare'] = dataset['Fare'].astype(int)
-#
-#     # Mapping Age
-#     dataset.loc[dataset['Age'] <= 16, 'Age'] = 0
-#     dataset.loc[(dataset['Age'] > 16) & (dataset['Age'] <= 32), 'Age'] = 1
-#     dataset.loc[(dataset['Age'] > 32) & (dataset['Age'] <= 48), 'Age'] = 2
-#     dataset.loc[(dataset['Age'] > 48) & (dataset['Age'] <= 64), 'Age'] = 3
-#     dataset.loc[dataset['Age'] > 64, 'Age'] = 4
-#
-# # Feature Selection
-# drop_elements = ['PassengerId', 'Name', 'Ticket', 'Cabin', 'SibSp', \
-#                  'Parch', 'FamilySize']
-# train = train.drop(drop_elements, axis=1)
-# train = train.drop(['CategoricalAge', 'CategoricalFare'], axis=1)
-#
-# test = test.drop(drop_elements, axis=1)
-#
-# print(train.head(10))
-#
-# train = train.values
-# test = test.values
-#
+
+# rename the sex feature with dummy variables (0 for female and 1 for male)
+for dataset in full_data:
+    # Mapping Sex
+    dataset['Sex'] = dataset['Sex'].map({'female': 0, 'male': 1}).astype(int)
+
+    # Mapping titles
+    title_mapping = {"Mr": 1, "Miss": 2, "Mrs": 3, "Master": 4, "Rare": 5}
+    dataset['Title'] = dataset['Title'].map(title_mapping)
+    dataset['Title'] = dataset['Title'].fillna(0)
+
+
+    # Mapping Embarked
+    dataset['Embarked'] = dataset['Embarked'].map({'S': 0, 'C': 1, 'Q': 2}).astype(int)
+
+    # Mapping Fare
+    dataset.loc[dataset['Fare'] <= 7.91, 'Fare'] = 0
+    dataset.loc[(dataset['Fare'] > 7.91) & (dataset['Fare'] <= 14.454), 'Fare'] = 1
+    dataset.loc[(dataset['Fare'] > 14.454) & (dataset['Fare'] <= 31), 'Fare'] = 2
+    dataset.loc[dataset['Fare'] > 31, 'Fare'] = 3
+    dataset['Fare'] = dataset['Fare'].astype(int)
+
+    # Mapping Age
+    dataset.loc[dataset['Age'] <= 16, 'Age'] = 0
+    dataset.loc[(dataset['Age'] > 16) & (dataset['Age'] <= 32), 'Age'] = 1
+    dataset.loc[(dataset['Age'] > 32) & (dataset['Age'] <= 48), 'Age'] = 2
+    dataset.loc[(dataset['Age'] > 48) & (dataset['Age'] <= 64), 'Age'] = 3
+    dataset.loc[dataset['Age'] > 64, 'Age'] = 4
+
+
+
+# Feature Selection
+
+drop_elements = ['PassengerId', 'Name', 'Ticket', 'Cabin', 'SibSp', \
+                 'Parch', 'FamilySize']
+
+train = train.drop(drop_elements, axis=1)
+train = train.drop(['CategoricalAge', 'CategoricalFare'], axis=1)
+
+test = test.drop(drop_elements, axis=1)
+
+print(train.head(10))
+
+train = train.values
+test = test.values
+
 
 
 from sklearn.model_selection import StratifiedShuffleSplit
@@ -185,50 +206,54 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
 from sklearn.linear_model import LogisticRegression
 
-# classifiers = [
-#     KNeighborsClassifier(3),
-#     SVC(probability=True),
-#     DecisionTreeClassifier(),
-#     RandomForestClassifier(),
-#     AdaBoostClassifier(),
-#     GradientBoostingClassifier(),
-#     GaussianNB(),
-#     LinearDiscriminantAnalysis(),
-#     QuadraticDiscriminantAnalysis(),
-#     LogisticRegression()]
-#
-# log_cols = ["Classifier", "Accuracy"]
-# log = pd.DataFrame(columns=log_cols)
-#
-# sss = StratifiedShuffleSplit(n_splits=10, test_size=0.1, random_state=0)
-#
-# X = train[0::, 1::]
-# y = train[0::, 0]
-#
-# acc_dict = {}
-#
-# for train_index, test_index in sss.split(X, y):
-#     X_train, X_test = X[train_index], X[test_index]
-#     y_train, y_test = y[train_index], y[test_index]
-#
-#     for clf in classifiers:
-#         name = clf.__class__.__name__
-#         clf.fit(X_train, y_train)
-#         train_predictions = clf.predict(X_test)
-#         acc = accuracy_score(y_test, train_predictions)
-#         if name in acc_dict:
-#             acc_dict[name] += acc
-#         else:
-#             acc_dict[name] = acc
-#
-# for clf in acc_dict:
-#     acc_dict[clf] = acc_dict[clf] / 10.0
-#     log_entry = pd.DataFrame([[clf, acc_dict[clf]]], columns=log_cols)
-#     log = log.append(log_entry)
-#
-# plt.xlabel('Accuracy')
-# plt.title('Classifier Accuracy')
-#
-# sns.set_color_codes("muted")
-# sns.barplot(x='Accuracy', y='Classifier', data=log, color="b")
-# plt.show()
+classifiers = [
+    KNeighborsClassifier(3),
+    SVC(probability=True),
+    DecisionTreeClassifier(),
+    RandomForestClassifier(),
+    AdaBoostClassifier(),
+    GradientBoostingClassifier(),
+    GaussianNB(),
+    LinearDiscriminantAnalysis(),
+    QuadraticDiscriminantAnalysis(),
+    LogisticRegression()]
+
+log_cols = ["Classifier", "Accuracy"]
+log = pd.DataFrame(columns=log_cols)  #TODO what's this?
+
+# todo, why are we sampling anything?  shouldnt we just be applying the test data set?
+
+sss = StratifiedShuffleSplit(n_splits=10, test_size=0.1, random_state=0)
+
+X = train[0::, 1::]  #TODO: what's this slicing syntax do?
+y = train[0::, 0]
+
+acc_dict = {}
+
+for train_index, test_index in sss.split(X, y):
+    X_train, X_test = X[train_index], X[test_index]
+    y_train, y_test = y[train_index], y[test_index]
+
+    for clf in classifiers:
+        name = clf.__class__.__name__  # eg. (KNeighborsClassifier)
+        clf.fit(X_train, y_train)
+        train_predictions = clf.predict(X_test)
+        acc = accuracy_score(y_test, train_predictions)  #
+        if name in acc_dict:
+            acc_dict[name] += acc
+        else:
+            acc_dict[name] = acc
+
+print(acc_dict)
+
+for clf in acc_dict:
+    acc_dict[clf] = acc_dict[clf] / 10.0
+    log_entry = pd.DataFrame([[clf, acc_dict[clf]]], columns=log_cols)
+    log = log.append(log_entry)
+
+plt.xlabel('Accuracy')
+plt.title('Classifier Accuracy')
+
+sns.set_color_codes("muted")
+sns.barplot(x='Accuracy', y='Classifier', data=log, color="b")
+plt.show()
