@@ -18,6 +18,18 @@ import re as re  # regular exporessions
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+# Load classifiers
+from sklearn.model_selection import StratifiedShuffleSplit
+from sklearn.metrics import accuracy_score, log_loss
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, GradientBoostingClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
+from sklearn.linear_model import LogisticRegression
+
+
 # load test and train datasets (from kaggles.s built in features)
 train = pd.read_csv('datasets/train.csv', header = 0, dtype={'Age': np.float64})
 test  = pd.read_csv('datasets/test.csv' , header = 0, dtype={'Age': np.float64})
@@ -127,7 +139,7 @@ for dataset in full_data:
     dataset['Title'] = dataset['Name'].apply(get_title)
 
 # create a cross table to view the frequency of each title within each gender category
-print(pd.crosstab(train['Title'], train['Sex']))
+# print(pd.crosstab(train['Title'], train['Sex']))
 
 
 
@@ -145,8 +157,8 @@ for dataset in full_data:
 
 
 #TODO: seperate rare into rare-male and rare-female
-# table showing how title matches to each title
-print(train[['Title', 'Survived']].groupby(['Title'], as_index=False).mean())
+# table showing how title matches to each/ title
+# print(train[['Title', 'Survived']].groupby(['Title'], as_index=False).mean())
 
 
 # rename the sex feature with dummy variables (0 for female and 1 for male)
@@ -189,28 +201,21 @@ train = train.drop(['CategoricalAge', 'CategoricalFare'], axis=1)
 
 test = test.drop(drop_elements, axis=1)
 
-print(train.head(10))
+# print(train.head(10))
 
 train = train.values
 test = test.values
 
 
 
-from sklearn.model_selection import StratifiedShuffleSplit
-from sklearn.metrics import accuracy_score, log_loss
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.svm import SVC
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, GradientBoostingClassifier
-from sklearn.naive_bayes import GaussianNB
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
-from sklearn.linear_model import LogisticRegression
+#TODO Classifier parameters can be retested here, but they should be auto-adjusted using a loop!!!)
+#TODO Add plotly printout to show the timeit runtime for each model (optomized at its highest setting!!!)
 
 classifiers = [
-    KNeighborsClassifier(3),
+    KNeighborsClassifier(4),
     SVC(probability=True),
-    DecisionTreeClassifier(),
-    RandomForestClassifier(),
+    DecisionTreeClassifier(max_depth=10),
+    RandomForestClassifier(n_estimators=100, max_depth=15),
     AdaBoostClassifier(),
     GradientBoostingClassifier(),
     GaussianNB(),
@@ -229,12 +234,13 @@ sss = StratifiedShuffleSplit(n_splits=10, test_size=0.1, random_state=0)
 X = train[0::, 1::]  #TODO: revisit double slicing syntax?
 y = train[0::, 0]
 
-print("X file:", X)
+# print("X file:", X)  #TODO what is this?
 
+#TODO add trial and test accuracy
 
 acc_dict = {}
 
-#TODO revisit (why are there splits going on if we already have the test file?
+#TODO revisit (why are there splits going on if we already have the test file?)
 
 for train_index, test_index in sss.split(X, y):
     X_train, X_test = X[train_index], X[test_index]
@@ -246,14 +252,18 @@ for train_index, test_index in sss.split(X, y):
         train_predictions = clf.predict(X_test)  # predict with each classifier using the X_test files
         acc = accuracy_score(y_test, train_predictions) #temp value acc to hold the accuray
 
-        if name in acc_dict:  # if built-in mtches the dictionary name
+
+#TODO: Theres gotta be a better way to do this!
+
+        if name in acc_dict:  # if built-in matches the dictionary name
             acc_dict[name] += acc  # add accuracy to names value (0 + acc)
         else:
             acc_dict[name] = acc  #else accuracy == 0 (right?)
 
-# print(acc_dict)
+# print(acc_dict)  (why are the accuracy entries on a scale of 1 - 10?)
 
-for clf in acc_dict:
+for clf in acc_dict:  # clf = classifier name (KNeighborsClassifier, GaussianNB)
+
     acc_dict[clf] = acc_dict[clf] / 10.0
     log_entry = pd.DataFrame([[clf, acc_dict[clf]]], columns=log_cols)
     log = log.append(log_entry)  # the actual table that holds the classifier accuracies

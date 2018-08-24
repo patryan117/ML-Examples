@@ -68,15 +68,12 @@ print(Y_test.shape)
 ######################################################################################################################
 
 
-
 # assign a linear regression model to the object "lm"
 lm = LinearRegression()
 lm.fit(X_train, Y_train)
 
 # Make predictions for the test_x variables and assign to Y_pred
 Y_pred = lm.predict(X_test)
-
-
 
 
 # Create a scatterplot of the predicted prices vs actual prices
