@@ -67,36 +67,25 @@ print(Y_test.shape)
 #  Simple Linear Regression
 ######################################################################################################################
 
+
+
 # assign a linear regression model to the object "lm"
 lm = LinearRegression()
 lm.fit(X_train, Y_train)
 
-
+# Make predictions for the test_x variables and assign to Y_pred
 Y_pred = lm.predict(X_test)
-plt.scatter(Y_test, Y_pred)
-plt.xlabel("Prices: $Y_i$")
-plt.ylabel("Predicted prices: $\hat{Y}_i$")
-plt.title("Prices vs Predicted prices: $Y_i$ vs $\hat{Y}_i$")
-plt.show()
 
 
 
 
-
-# Create random data with numpy
-#todo figure out how to print this in Pycharm's scientific mode
-
-N = 1000
-random_x = np.random.randn(N)
-random_y = np.random.randn(N)
-
-# Create a trace
-#todo add names to the output
+# Create a scatterplot of the predicted prices vs actual prices
 trace = go.Scatter(
     x = Y_test,
     y = Y_pred,
     mode = 'markers'
 )
+
 layout= go.Layout(
     title= 'Predicted Versus Actual',
     hovermode= 'closest',
