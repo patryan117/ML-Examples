@@ -210,14 +210,14 @@ test = test.values
 
 #TODO Classifier parameters can be retested here, but they should be auto-adjusted using a loop!!!)
 #TODO Add plotly printout to show the timeit runtime for each model (optomized at its highest setting!!!)
-
+# note: parameters tuned by hand
 classifiers = [
     KNeighborsClassifier(4),
-    SVC(probability=True),
+    SVC(probability=True, C=1.0),
     DecisionTreeClassifier(max_depth=10),
     RandomForestClassifier(n_estimators=100, max_depth=15),
     AdaBoostClassifier(),
-    GradientBoostingClassifier(),
+    GradientBoostingClassifier(learning_rate=0.30, max_depth=3),
     GaussianNB(),
     LinearDiscriminantAnalysis(),
     QuadraticDiscriminantAnalysis(),
@@ -250,7 +250,7 @@ for train_index, test_index in sss.split(X, y):
         name = clf.__class__.__name__  # built-in name eg. (KNeighborsClassifier)
         clf.fit(X_train, y_train)  # fit each classifier object
         train_predictions = clf.predict(X_test)  # predict with each classifier using the X_test files
-        acc = accuracy_score(y_test, train_predictions) #temp value acc to hold the accuray
+        acc = accuracy_score(y_test, train_predictions) #temp value acc to hold the accuracy
 
 
 #TODO: Theres gotta be a better way to do this!
