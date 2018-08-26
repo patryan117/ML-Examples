@@ -226,7 +226,7 @@ classifiers = [
     QuadraticDiscriminantAnalysis(),
     LogisticRegression()]
 
-#TODO Include deep learning, hidden Markov and 
+#TODO Include deep learning, hidden Markov and
 
 log_cols = ["Classifier", "Accuracy"]
 log = pd.DataFrame(columns=log_cols)   # create an empty df to populate
