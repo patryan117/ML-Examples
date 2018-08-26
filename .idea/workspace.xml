@@ -37,8 +37,8 @@
       <file leaf-file-name="Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="261" selection-start-line="249" selection-end-line="261" />
+            <state relative-caret-position="314">
+              <caret line="228" column="47" selection-start-line="228" selection-start-column="47" selection-end-line="228" selection-end-column="47" />
               <folding>
                 <element signature="e#511#529#0" expanded="true" />
               </folding>
@@ -82,7 +82,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-15" />
     <option name="y" value="-15" />
     <option name="width" value="3873" />
@@ -278,8 +278,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="261" selection-start-line="249" selection-end-line="261" />
+        <state relative-caret-position="314">
+          <caret line="228" column="47" selection-start-line="228" selection-start-column="47" selection-end-line="228" selection-end-column="47" />
           <folding>
             <element signature="e#511#529#0" expanded="true" />
           </folding>

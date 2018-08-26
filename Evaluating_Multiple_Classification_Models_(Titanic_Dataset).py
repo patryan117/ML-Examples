@@ -210,7 +210,10 @@ test = test.values
 
 #TODO Classifier parameters can be retested here, but they should be auto-adjusted using a loop!!!)
 #TODO Add plotly printout to show the timeit runtime for each model (optomized at its highest setting!!!)
-# note: parameters tuned by hand
+
+
+# note: parameters optimized by hand
+
 classifiers = [
     KNeighborsClassifier(4),
     SVC(probability=True, C=1.0),
@@ -223,6 +226,8 @@ classifiers = [
     QuadraticDiscriminantAnalysis(),
     LogisticRegression()]
 
+#TODO Include deep learning, hidden Markov and 
+
 log_cols = ["Classifier", "Accuracy"]
 log = pd.DataFrame(columns=log_cols)   # create an empty df to populate
 
@@ -230,8 +235,9 @@ log = pd.DataFrame(columns=log_cols)   # create an empty df to populate
 
 sss = StratifiedShuffleSplit(n_splits=10, test_size=0.1, random_state=0)  #create the sss object later to be used to split
 
+# TODO summarize stratified sampling
 
-X = train[0::, 1::]  #TODO: revisit double slicing syntax?
+X = train[0::, 1::]  #TODO: explain double slicing syntax?
 y = train[0::, 0]
 
 # print("X file:", X)  #TODO what is this?
