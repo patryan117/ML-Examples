@@ -226,9 +226,9 @@ classifiers = [
 log_cols = ["Classifier", "Accuracy"]
 log = pd.DataFrame(columns=log_cols)   # create an empty df to populate
 
-# todo, why are we sampling anything?  shouldn't we just be applying the test data set?
+# TODO, why are we sampling anything?  shouldn't we just be applying the test data set?
 
-sss = StratifiedShuffleSplit(n_splits=10, test_size=0.1, random_state=0)
+sss = StratifiedShuffleSplit(n_splits=10, test_size=0.1, random_state=0)  #create the sss object later to be used to split
 
 
 X = train[0::, 1::]  #TODO: revisit double slicing syntax?

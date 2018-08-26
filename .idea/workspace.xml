@@ -37,8 +37,8 @@
       <file leaf-file-name="Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="217" column="28" lean-forward="true" selection-start-line="217" selection-start-column="28" selection-end-line="217" selection-end-column="28" />
+            <state relative-caret-position="348">
+              <caret line="261" selection-start-line="249" selection-end-line="261" />
               <folding>
                 <element signature="e#511#529#0" expanded="true" />
               </folding>
@@ -278,8 +278,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="217" column="28" lean-forward="true" selection-start-line="217" selection-start-column="28" selection-end-line="217" selection-end-column="28" />
+        <state relative-caret-position="348">
+          <caret line="261" selection-start-line="249" selection-end-line="261" />
           <folding>
             <element signature="e#511#529#0" expanded="true" />
           </folding>
