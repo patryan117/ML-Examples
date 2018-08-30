@@ -35,6 +35,7 @@ train = pd.read_csv('datasets/train.csv', header = 0, dtype={'Age': np.float64})
 test  = pd.read_csv('datasets/test.csv' , header = 0, dtype={'Age': np.float64})
 full_data = [train, test]
 
+
 #ways to inspect the dataframes in pandas
 # print(type(train))
 # print(train.info())
@@ -115,6 +116,7 @@ for dataset in full_data:
 # Create new feature of categorical age (only only in the train dataset)
 train['CategoricalAge'] = pd.cut(train['Age'], 5)
 # print(train['CategoricalAge'])
+
 
 # TODO figure out how this works
 # print a table showing how categorical age influenced the survival outcome
