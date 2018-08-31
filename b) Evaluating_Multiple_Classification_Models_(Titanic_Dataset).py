@@ -4,7 +4,10 @@
 # EVALUATING MULTIPLE ML MODELS (TITANIC DATASET)
 ##########################################################################################################
 
-
+# test
+#kjlafdsjlkdfsakjldfs
+#jlkfsdjlkfdsjklfds
+#dfskjldfskjldfskjl
 
 
 ##########################################################################################################
@@ -211,7 +214,7 @@ test = test.values
 
 # TODO Classifier parameters can be retested here, but they should be auto-adjusted using a loop)
 # TODO Add plotly printout to show the timeit runtime for each model (optomized at its highest setting)
-# TODO make comparison plot for each ML algorithm, with 
+# TODO make comparison plot for each ML algorithm, with
 
 # note: parameters optimized by hand
 
