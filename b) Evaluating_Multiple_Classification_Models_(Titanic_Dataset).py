@@ -79,7 +79,6 @@ for dataset in full_data:
 print("\n")
 
 
-
 # Fill in NA's in the "Fare" column with the median price (14.4542)
 # Create new element in train dataset using pd.qcut()
 for dataset in full_data:
@@ -92,7 +91,6 @@ train['CategoricalFare'] = pd.qcut(train['Fare'], 4)
 
 # creating features in both the train and test datasets (which are contained in the list full_data
 for dataset in full_data:
-
 
     # set the mean age to age_avg (29.6991)
     age_avg = dataset['Age'].mean()
@@ -119,7 +117,7 @@ train['CategoricalAge'] = pd.cut(train['Age'], 5)
 # print(train['CategoricalAge'])
 
 
-# TODO figure out how this works
+# TODO figure out how this works.
 # print a table showing how categorical age influenced the survival outcome
 # print(train[['CategoricalAge', 'Survived']].groupby(['CategoricalAge'], as_index=False).mean())
 print("\n")
@@ -137,7 +135,8 @@ def get_title(name):
     else:
         return ""  # else, return an empty string
 
-#TODO does apply do it one at a time
+#TODO Does apply do it one at a time.
+
 for dataset in full_data:
     dataset['Title'] = dataset['Name'].apply(get_title)
 
@@ -159,8 +158,8 @@ for dataset in full_data:
     dataset['Title'] = dataset['Title'].replace('Mme', 'Mrs')
 
 
-#TODO: seperate rare into rare-male and rare-female
-# table showing how title matches to each/ title
+#TODO: Seperate rare into rare-male and rare-female
+# table showing how title matches to each title
 # print(train[['Title', 'Survived']].groupby(['Title'], as_index=False).mean())
 
 
@@ -195,7 +194,6 @@ for dataset in full_data:
 
 
 # Feature Selection
-
 drop_elements = ['PassengerId', 'Name', 'Ticket', 'Cabin', 'SibSp', \
                  'Parch', 'FamilySize']
 
@@ -211,9 +209,9 @@ test = test.values
 
 
 
-#TODO Classifier parameters can be retested here, but they should be auto-adjusted using a loop!!!)
-#TODO Add plotly printout to show the timeit runtime for each model (optomized at its highest setting!!!)
-
+# TODO Classifier parameters can be retested here, but they should be auto-adjusted using a loop)
+# TODO Add plotly printout to show the timeit runtime for each model (optomized at its highest setting)
+# TODO make comparison plot for each ML algorithm, with 
 
 # note: parameters optimized by hand
 
@@ -222,12 +220,13 @@ classifiers = [
     SVC(probability=True, C=1.0),
     DecisionTreeClassifier(max_depth=10),
     RandomForestClassifier(n_estimators=100, max_depth=15),
-    AdaBoostClassifier(),
+    AdaBoostClassifier(n_estimators=100),
     GradientBoostingClassifier(learning_rate=0.30, max_depth=3),
     GaussianNB(),
     LinearDiscriminantAnalysis(),
     QuadraticDiscriminantAnalysis(),
     LogisticRegression()]
+
 
 #TODO Include deep learning, hidden Markov and
 
@@ -236,7 +235,8 @@ log = pd.DataFrame(columns=log_cols)   # create an empty df to populate
 
 # TODO, why are we sampling anything?  shouldn't we just be applying the test data set?
 
-sss = StratifiedShuffleSplit(n_splits=10, test_size=0.1, random_state=0)  #create the sss object later to be used to split
+#create the sss object later to be used to split
+sss = StratifiedShuffleSplit(n_splits=10, test_size=0.1, random_state=0)
 
 # TODO summarize stratified sampling
 
