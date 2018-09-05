@@ -4,6 +4,11 @@
 # EVALUATING MULTIPLE ML MODELS (TITANIC DATASET)
 ##########################################################################################################
 
+# TODO convert to Jupyter notebook
+
+# TODO create two different bar charts for test and train data
+# OK, but make sure that the sss is splitting the data the same way
+
 
 
 ##########################################################################################################
@@ -30,7 +35,7 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticD
 from sklearn.linear_model import LogisticRegression
 
 
-# load test and train datasets (from kaggles.s built in features)
+# load test and train datasets (from kaggles's built in features)
 train = pd.read_csv('datasets/train.csv', header = 0, dtype={'Age': np.float64})
 test  = pd.read_csv('datasets/test.csv' , header = 0, dtype={'Age': np.float64})
 full_data = [train, test]
@@ -112,6 +117,7 @@ for dataset in full_data:
     dataset['Age'] = dataset['Age'].astype(int)
 
 # Create new feature of categorical age (only only in the train dataset)
+
 train['CategoricalAge'] = pd.cut(train['Age'], 5)
 # print(train['CategoricalAge'])
 
@@ -127,6 +133,7 @@ print("\n")
 
 # create a new function to extract title from a string runs that match "xxx. "string
 # group(1) allows us to access the actual string that we are targeting
+
 def get_title(name):
     title_search = re.search(' ([A-Za-z]+)\.', name)
     if title_search:	# If the title exists, extract and return it.
@@ -134,7 +141,6 @@ def get_title(name):
     else:
         return ""  # else, return an empty string
 
-#TODO Does apply do it one at a time.
 
 for dataset in full_data:
     dataset['Title'] = dataset['Name'].apply(get_title)
@@ -143,14 +149,13 @@ for dataset in full_data:
 # print(pd.crosstab(train['Title'], train['Sex']))
 
 
-
 for dataset in full_data:
 
     # replace the rare terms with the word "rare" in the title category
     dataset['Title'] = dataset['Title'].replace(['Lady', 'Countess','Capt', 'Col',
  	'Don', 'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer', 'Dona'], 'Rare')
 
-    # replace the mispelled titles
+    # replace the misspelled titles
     # correct title can be inferred by gender and table (i.e. Mlle and Mme both corespond to female gendered datapoints)
     dataset['Title'] = dataset['Title'].replace('Mlle', 'Miss')
     dataset['Title'] = dataset['Title'].replace('Ms', 'Miss')
@@ -232,12 +237,16 @@ classifiers = [
 log_cols = ["Classifier", "Accuracy"]
 log = pd.DataFrame(columns=log_cols)   # create an empty df to populate
 
-# TODO, why are we sampling anything?  shouldn't we just be applying the test data set?
 
-#create the sss object later to be used to split
+
+# note that we cannt apply the test data directly, since we do not coorrect label variable for each dataset.
+
+#create the sss object later to be used to split ( note that it doesnt take the sample as a parameter)
 sss = StratifiedShuffleSplit(n_splits=10, test_size=0.1, random_state=0)
 
-# TODO summarize stratified sampling
+
+
+
 
 X = train[0::, 1::]  #TODO: explain double slicing syntax?
 y = train[0::, 0]
@@ -247,6 +256,8 @@ y = train[0::, 0]
 #TODO add trial and test accuracy
 
 acc_dict = {}
+
+print(sss.split(X, y))
 
 #TODO revisit (why are there splits going on if we already have the test file?)
 
