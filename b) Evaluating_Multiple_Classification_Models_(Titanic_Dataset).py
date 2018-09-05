@@ -13,6 +13,8 @@
 # TODO Add plotly printout to show the timeit runtime for each model (optomized at its highest setting)
 # TODO make comparison plot for each ML algorithm, with
 
+# TODO update with more feature engineering options
+
 
 
 ##########################################################################################################
@@ -23,7 +25,7 @@
 # Load libraries:
 import numpy as np
 import pandas as pd
-import re as re  # regular exporessions
+import re as re  # regular expressions
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -78,7 +80,7 @@ for dataset in full_data:
     dataset['IsAlone'] = 0
     dataset.loc[dataset['FamilySize'] == 1, 'IsAlone'] = 1
 # print (train[['IsAlone', 'Survived']].groupby(['IsAlone'], as_index=False).mean())
-# Single passengers were more likley to have survived
+# Single passengers were more likely to have survived
 print("\n")
 
 # Fill NA's in the embarked category with the most common origin point (S: Southampton)
@@ -96,7 +98,7 @@ train['CategoricalFare'] = pd.qcut(train['Fare'], 4)
 # print(train[['CategoricalFare', 'Survived']].groupby(['CategoricalFare'], as_index=False).mean())
 
 
-#TODO: fix chained indexing
+# TODO: fix chained indexing
 
 # creating features in both the train and test datasets (which are contained in the list full_data
 for dataset in full_data:
@@ -129,7 +131,7 @@ train['CategoricalAge'] = pd.cut(train['Age'], 5)
 
 # TODO figure out how this works.
 # print a table showing how categorical age influenced the survival outcome
-# print(train[['CategoricalAge', 'Survived']].groupby(['CategoricalAge'], as_index=False).mean())
+print(train[['CategoricalAge', 'Survived']].groupby(['CategoricalAge'], as_index=False).mean())
 print("\n")
 
 
@@ -152,7 +154,6 @@ for dataset in full_data:
 
 # create a cross table to view the frequency of each title within each gender category
 # print(pd.crosstab(train['Title'], train['Sex']))
-
 
 for dataset in full_data:
 
@@ -207,7 +208,6 @@ drop_elements = ['PassengerId', 'Name', 'Ticket', 'Cabin', 'SibSp', \
 
 train = train.drop(drop_elements, axis=1)
 train = train.drop(['CategoricalAge', 'CategoricalFare'], axis=1)
-
 test = test.drop(drop_elements, axis=1)
 
 # print(train.head(10))
@@ -251,7 +251,7 @@ log = pd.DataFrame(columns=log_cols)   # create an empty df to populate
 
 
 
-# note that we cannt apply the test data directly, since we do not coorrect label variable for each dataset.
+# note that we cannt apply the test data directly, since we do not correct label for each observation.
 
 #create the sss object later to be used to split ( note that it doesnt take the sample as a parameter)
 sss = StratifiedShuffleSplit(n_splits=10, test_size=0.1, random_state=0)
@@ -264,13 +264,14 @@ X = train[0::, 1::]  #TODO: explain double slicing syntax?
 y = train[0::, 0]
 
 print("X file:", X)  #TODO what is this?
+print("y file:", y)  #(response outcome of the sss object)(prints the same object each time)
 
 
 acc_dict = {}
 
 print(sss.split(X, y))
 
-# Test file needs to be split from the train file since we dont know the actual values of the train file.
+# Test file needs to be split from the train file since we don't know the actual values of the train file.
 
 for train_index, test_index in sss.split(X, y):
     X_train, X_test = X[train_index], X[test_index]
