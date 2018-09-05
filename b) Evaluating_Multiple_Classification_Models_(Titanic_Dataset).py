@@ -6,6 +6,10 @@
 
 # TODO convert to Jupyter notebook
 
+# Add plotly plots
+#
+
+
 # TODO create two different bar charts for test and train data
 # OK, but make sure that the sss is splitting the data the same way
 
@@ -31,7 +35,7 @@ import seaborn as sns
 
 # Load classifiers
 from sklearn.model_selection import StratifiedShuffleSplit
-from sklearn.metrics import accuracy_score, log_loss
+from sklearn.metrics import accuracy_score
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
@@ -129,7 +133,7 @@ train['CategoricalAge'] = pd.cut(train['Age'], 5)
 # print(train['CategoricalAge'])
 
 
-# TODO figure out how this works.
+# TODO explain how the groupby function works
 # print a table showing how categorical age influenced the survival outcome
 print(train[['CategoricalAge', 'Survived']].groupby(['CategoricalAge'], as_index=False).mean())
 print("\n")
@@ -186,6 +190,8 @@ for dataset in full_data:
 
     # Mapping Embarked
     dataset['Embarked'] = dataset['Embarked'].map({'S': 0, 'C': 1, 'Q': 2}).astype(int)
+
+    #TODO automate using a loop or generator
 
     # Mapping Fare
     dataset.loc[dataset['Fare'] <= 7.91, 'Fare'] = 0
