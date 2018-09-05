@@ -9,6 +9,10 @@
 # TODO create two different bar charts for test and train data
 # OK, but make sure that the sss is splitting the data the same way
 
+# TODO Classifier parameters can be retested here, but they should be auto-adjusted using a loop)
+# TODO Add plotly printout to show the timeit runtime for each model (optomized at its highest setting)
+# TODO make comparison plot for each ML algorithm, with
+
 
 
 ##########################################################################################################
@@ -33,7 +37,7 @@ from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, Gradien
 from sklearn.naive_bayes import GaussianNB
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
 from sklearn.linear_model import LogisticRegression
-
+from sklearn.neural_network import MLPClassifier
 
 # load test and train datasets (from kaggles's built in features)
 train = pd.read_csv('datasets/train.csv', header = 0, dtype={'Age': np.float64})
@@ -50,6 +54,7 @@ full_data = [train, test]
 # # taking the Pclass and Survived categories from sample, and showing the mean
 # print (train[['Pclass', 'Survived']].groupby(['Pclass'], as_index=False).mean())
 # print("\n")
+
 # # Taking the sex and survived categories from sample and presenting the mean
 # print (train[["Sex", "Survived"]].groupby(['Sex'], as_index=False).mean())
 # print("\n")
@@ -108,7 +113,7 @@ for dataset in full_data:
     # make a random list of ages ranging within 1 sd from the mean, size equals null count
     #TODO what the duck?  (why do this instead of applying the mean like we did with age?)
 
-    age_null_random_list = np.random.randint(age_avg - age_std, age_avg + age_std, size=age_null_count)
+    age_null_random_list = np.random.randint(age_avg - age_std, age_avg + age_std, size = age_null_count)
 
     # Assign the random data list to the NA elements in the "Age" category:
     dataset['Age'][np.isnan(dataset['Age'])] = age_null_random_list
@@ -116,7 +121,7 @@ for dataset in full_data:
     # cast "Age" category to interger
     dataset['Age'] = dataset['Age'].astype(int)
 
-# Create new feature of categorical age (only only in the train dataset)
+# Create new feature of categorical age (only in the train dataset)
 
 train['CategoricalAge'] = pd.cut(train['Age'], 5)
 # print(train['CategoricalAge'])
@@ -196,7 +201,6 @@ for dataset in full_data:
     dataset.loc[dataset['Age'] > 64, 'Age'] = 4
 
 
-
 # Feature Selection
 drop_elements = ['PassengerId', 'Name', 'Ticket', 'Cabin', 'SibSp', \
                  'Parch', 'FamilySize']
@@ -213,9 +217,7 @@ test = test.values
 
 
 
-# TODO Classifier parameters can be retested here, but they should be auto-adjusted using a loop)
-# TODO Add plotly printout to show the timeit runtime for each model (optomized at its highest setting)
-# TODO make comparison plot for each ML algorithm, with
+
 
 # note: parameters optimized by hand
 
@@ -229,10 +231,20 @@ classifiers = [
     GaussianNB(),
     LinearDiscriminantAnalysis(),
     QuadraticDiscriminantAnalysis(),
-    LogisticRegression()]
+    LogisticRegression(),
+    MLPClassifier(activation='relu', alpha=1e-05, batch_size='auto',
+       beta_1=0.9, beta_2=0.999, early_stopping=False,
+       epsilon=1e-08, hidden_layer_sizes=(5, 100), learning_rate='constant',
+       learning_rate_init=0.001, max_iter=200, momentum=0.9,
+       nesterovs_momentum=True, power_t=0.5, random_state=1, shuffle=True,
+       solver='lbfgs', tol=0.0001, validation_fraction=0.1, verbose=False,
+       warm_start=False),
+
+    # Describe underlying reason for why the MLP keeps throwing a different score each time (paremeter-independent)
+
+    ]
 
 
-#TODO Include deep learning, hidden Markov and
 
 log_cols = ["Classifier", "Accuracy"]
 log = pd.DataFrame(columns=log_cols)   # create an empty df to populate
@@ -251,15 +263,14 @@ sss = StratifiedShuffleSplit(n_splits=10, test_size=0.1, random_state=0)
 X = train[0::, 1::]  #TODO: explain double slicing syntax?
 y = train[0::, 0]
 
-# print("X file:", X)  #TODO what is this?
+print("X file:", X)  #TODO what is this?
 
-#TODO add trial and test accuracy
 
 acc_dict = {}
 
 print(sss.split(X, y))
 
-#TODO revisit (why are there splits going on if we already have the test file?)
+# Test file needs to be split from the train file since we dont know the actual values of the train file.
 
 for train_index, test_index in sss.split(X, y):
     X_train, X_test = X[train_index], X[test_index]
