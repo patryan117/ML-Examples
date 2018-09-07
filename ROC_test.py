@@ -48,6 +48,7 @@ print(y_score)
 fpr = dict()
 tpr = dict()
 roc_auc = dict()
+
 for i in range(n_classes):
     fpr[i], tpr[i], _ = roc_curve(y_test[:, i], y_score[:, i])
     roc_auc[i] = auc(fpr[i], tpr[i])
