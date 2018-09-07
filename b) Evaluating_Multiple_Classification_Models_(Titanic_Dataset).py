@@ -4,20 +4,26 @@
 # EVALUATING MULTIPLE ML MODELS (TITANIC DATASET)
 ##########################################################################################################
 
-# TODO convert to Jupyter notebook
+# Notes:
+# - This code demonstrates how to evaluate the performance of multi-classifier on Kaggle's infamous Titanic datasest.
+# - Becuase Kaggle datasets are given as a pair of "train" (known y values) and "test" (unknown y values),
+# we will sample out of test dataset, so that classifier accuracy can be asessed.
+# - This demo highlights the benifits of using Scikit-learn's shared model functions ("__name__, fit, predict)
 
-# Add plotly plots
-#
 
 
-# TODO create two different bar charts for test and train data
-# OK, but make sure that the sss is splitting the data the same way
+# TODO: Convert .py files to Jupyter notebook and replace on Github
 
-# TODO Classifier parameters can be retested here, but they should be auto-adjusted using a loop)
-# TODO Add plotly printout to show the timeit runtime for each model (optomized at its highest setting)
-# TODO make comparison plot for each ML algorithm, with
+# TODO: Add plotly plots
+# TODO: Add ROC curve overlay for each classifier
+# TODO: Create two different bar charts for test and train data (verify that the sss is creating identical test samples)
+# TODO: Remove all references to the original test dataset (is there any reason to read it in in the begining?)
+# TODO: Classifier parameters can be retested here, but they should be auto-adjusted using a loop)
+# TODO: Add plotly printout to show the timeit runtime for each model (optomized at its highest setting)
+# TODO: Make comparison plot for each ML algorithm, with
+# TODO: Automate using a loop or generator (on seperating the ages into bins)
+# TODO: Update with more feature engineering options (auto-adjust binning)
 
-# TODO update with more feature engineering options
 
 
 
@@ -29,9 +35,17 @@
 # Load libraries:
 import numpy as np
 import pandas as pd
-import re as re  # regular expressions
+import re as re
 import matplotlib.pyplot as plt
 import seaborn as sns
+
+import plotly
+import plotly.offline
+import plotly.graph_objs as go
+
+
+#settings:
+np.set_printoptions(threshold=np.nan)
 
 # Load classifiers
 from sklearn.model_selection import StratifiedShuffleSplit
@@ -45,10 +59,15 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticD
 from sklearn.linear_model import LogisticRegression
 from sklearn.neural_network import MLPClassifier
 
+
+
+
+
 # load test and train datasets (from kaggles's built in features)
 train = pd.read_csv('datasets/train.csv', header = 0, dtype={'Age': np.float64})
 test  = pd.read_csv('datasets/test.csv' , header = 0, dtype={'Age': np.float64})
 full_data = [train, test]
+
 
 
 #ways to inspect the dataframes in pandas
@@ -58,7 +77,7 @@ full_data = [train, test]
 # print("\n")
 
 # # taking the Pclass and Survived categories from sample, and showing the mean
-# print (train[['Pclass', 'Survived']].groupby(['Pclass'], as_index=False).mean())
+print (train[['Pclass', 'Survived']].groupby(['Pclass'], as_index=False).mean())
 # print("\n")
 
 # # Taking the sex and survived categories from sample and presenting the mean
@@ -79,19 +98,18 @@ for dataset in full_data:
 # print (train[['FamilySize', 'Survived']].groupby(['FamilySize'], as_index=False).mean())
 # print("\n")
 
+
 # Create a dummy variable for if family member is alone
 for dataset in full_data:
     dataset['IsAlone'] = 0
     dataset.loc[dataset['FamilySize'] == 1, 'IsAlone'] = 1
 # print (train[['IsAlone', 'Survived']].groupby(['IsAlone'], as_index=False).mean())
 # Single passengers were more likely to have survived
-print("\n")
 
 # Fill NA's in the embarked category with the most common origin point (S: Southampton)
 for dataset in full_data:
     dataset['Embarked'] = dataset['Embarked'].fillna('S')
 # print (train[['Embarked', 'Survived']].groupby(['Embarked'], as_index=False).mean())
-print("\n")
 
 
 # Fill in NA's in the "Fare" column with the median price (14.4542)
@@ -117,8 +135,6 @@ for dataset in full_data:
     age_null_count = dataset['Age'].isnull().sum()
 
     # make a random list of ages ranging within 1 sd from the mean, size equals null count
-    #TODO what the duck?  (why do this instead of applying the mean like we did with age?)
-
     age_null_random_list = np.random.randint(age_avg - age_std, age_avg + age_std, size = age_null_count)
 
     # Assign the random data list to the NA elements in the "Age" category:
@@ -133,10 +149,9 @@ train['CategoricalAge'] = pd.cut(train['Age'], 5)
 # print(train['CategoricalAge'])
 
 
-# TODO explain how the groupby function works
 # print a table showing how categorical age influenced the survival outcome
-print(train[['CategoricalAge', 'Survived']].groupby(['CategoricalAge'], as_index=False).mean())
-print("\n")
+# print(train[['CategoricalAge', 'Survived']].groupby(['CategoricalAge'], as_index=False).mean())
+# print("\n")
 
 
 
@@ -162,23 +177,23 @@ for dataset in full_data:
 for dataset in full_data:
 
     # replace the rare terms with the word "rare" in the title category
-    dataset['Title'] = dataset['Title'].replace(['Lady', 'Countess','Capt', 'Col',
+    dataset['Title'] = dataset['Title'].replace(['Lady', 'Countess','Capt', 'Col',\
  	'Don', 'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer', 'Dona'], 'Rare')
 
     # replace the misspelled titles
-    # correct title can be inferred by gender and table (i.e. Mlle and Mme both corespond to female gendered datapoints)
+    # correct title can be inferred by gender and table (e.g. Mlle and Mme both corespond to female gendered observations)
     dataset['Title'] = dataset['Title'].replace('Mlle', 'Miss')
     dataset['Title'] = dataset['Title'].replace('Ms', 'Miss')
     dataset['Title'] = dataset['Title'].replace('Mme', 'Mrs')
 
 
-#TODO: Seperate rare into rare-male and rare-female
 # table showing how title matches to each title
 # print(train[['Title', 'Survived']].groupby(['Title'], as_index=False).mean())
 
 
 # rename the sex feature with dummy variables (0 for female and 1 for male)
 for dataset in full_data:
+
     # Mapping Sex
     dataset['Sex'] = dataset['Sex'].map({'female': 0, 'male': 1}).astype(int)
 
@@ -191,7 +206,6 @@ for dataset in full_data:
     # Mapping Embarked
     dataset['Embarked'] = dataset['Embarked'].map({'S': 0, 'C': 1, 'Q': 2}).astype(int)
 
-    #TODO automate using a loop or generator
 
     # Mapping Fare
     dataset.loc[dataset['Fare'] <= 7.91, 'Fare'] = 0
@@ -209,23 +223,29 @@ for dataset in full_data:
 
 
 # Feature Selection
-drop_elements = ['PassengerId', 'Name', 'Ticket', 'Cabin', 'SibSp', \
-                 'Parch', 'FamilySize']
+drop_elements = ['PassengerId', 'Name', 'Ticket', 'Cabin', 'SibSp', 'Parch', 'FamilySize']
 
 train = train.drop(drop_elements, axis=1)
 train = train.drop(['CategoricalAge', 'CategoricalFare'], axis=1)
-test = test.drop(drop_elements, axis=1)
 
-# print(train.head(10))
-
-train = train.values
-test = test.values
+# print(train.values,"\n")  # once done, train.values is inaccessible
+print(type(train.values))
 
 
+train = train.values  # needs to be recast to allow slicing
+
+print(type(train))
+
+print(train, "\n")
 
 
 
-# note: parameters optimized by hand
+
+
+
+
+
+# note: Parameters roughly optimized by hand
 
 classifiers = [
     KNeighborsClassifier(4),
@@ -246,7 +266,7 @@ classifiers = [
        solver='lbfgs', tol=0.0001, validation_fraction=0.1, verbose=False,
        warm_start=False),
 
-    # Describe underlying reason for why the MLP keeps throwing a different score each time (paremeter-independent)
+    # TODO: Describe why the MLP keeps throwing a different score each time (paremeter-independent)
 
     ]
 
@@ -257,7 +277,6 @@ log = pd.DataFrame(columns=log_cols)   # create an empty df to populate
 
 
 
-# note that we cannt apply the test data directly, since we do not correct label for each observation.
 
 #create the sss object later to be used to split ( note that it doesnt take the sample as a parameter)
 sss = StratifiedShuffleSplit(n_splits=10, test_size=0.1, random_state=0)
@@ -265,19 +284,16 @@ sss = StratifiedShuffleSplit(n_splits=10, test_size=0.1, random_state=0)
 
 
 
-
-X = train[0::, 1::]  #TODO: explain double slicing syntax?
-y = train[0::, 0]
-
-print("X file:", X)  #TODO what is this?
-print("y file:", y)  #(response outcome of the sss object)(prints the same object each time)
+# Concention Note: (use for matrices and lower case letters are used for vectors)
+X = train[0:, 1:]   # Assign everything but the first column to a matrix called X
+y = train[0:, 0]    # Assign the first column from the training dataset (i.e. survical boolean) to a vector called y
 
 
-acc_dict = {}
+acc_dict = {}  # dictinary to hold the accuracy of each classifier
 
 print(sss.split(X, y))
 
-# Test file needs to be split from the train file since we don't know the actual values of the train file.
+# Test dataset must be derived from the train file since we don't know the actual values of the train file.
 
 for train_index, test_index in sss.split(X, y):
     X_train, X_test = X[train_index], X[test_index]
@@ -300,13 +316,12 @@ for train_index, test_index in sss.split(X, y):
 # print(acc_dict)  (why are the accuracy entries on a scale of 1 - 10?)
 
 for clf in acc_dict:  # clf = classifier name (KNeighborsClassifier, GaussianNB)
-
     acc_dict[clf] = acc_dict[clf] / 10.0
     log_entry = pd.DataFrame([[clf, acc_dict[clf]]], columns=log_cols)
     log = log.append(log_entry)  # the actual table that holds the classifier accuracies
 
 
-print(log)
+print(log)  # printing the classifier's comparative performance
 
 plt.xlabel('Accuracy')
 plt.title('Classifier Accuracy')
