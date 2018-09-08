@@ -1,14 +1,21 @@
 
 
 ##########################################################################################################
-# EVALUATING MULTIPLE ML MODELS (TITANIC DATASET)
+# EVALUATING MULTIPLE MACHINE LEARNING MODELS ON THE TITANIC DATASET
 ##########################################################################################################
 
 # Notes:
-# - This code demonstrates how to evaluate the performance of multi-classifier on Kaggle's infamous Titanic datasest.
-# - Becuase Kaggle datasets are given as a pair of "train" (known y values) and "test" (unknown y values),
-# we will sample out of test dataset, so that classifier accuracy can be asessed.
-# - This demo highlights the benifits of using Scikit-learn's shared model functions ("__name__, fit, predict)
+# - This code demonstrates how to evaluate the performance of multi-classifier on Kaggle's infamous Titanic data set.
+
+# - Because Kaggle data sets are given as a pair of "train" (known y values) and "test" (unknown y values), we will
+# sample out of test dataset, so that classifier accuracy can be asessed.
+
+# - This demo highlights the benefits of using Scikit-learn's shared model functions ("__name__, fit, predict)
+
+# - Note: the titanic data set is borderline impossible to fully predict or even reach an accuracy in the high 90's.
+# The features just don't give us enough information to fully understand how a passenger would have survived.
+# Additional information might have included their location on the ship when it hit the iceberg, or their or the
+# relative time that they ultimately reached the top deck.
 
 
 
