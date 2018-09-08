@@ -18,9 +18,7 @@
 # TODO: Add plotly plots
 # TODO: Add ROC curve overlay for each classifier
 # TODO: Create two different bar charts for test and train data (verify that the sss is creating identical test samples)
-# TODO: Classifier parameters can be retested here, but they should be auto-adjusted using a loop)
-# TODO: Add plotly printout to show the timeit runtime for each model (optomized at its highest setting)
-# TODO: Make comparison plot for each ML algorithm, with
+# TODO: Add plotly barchart/gantt chart to show the timeit runtime for each model (optomized at its highest setting)
 
 
 

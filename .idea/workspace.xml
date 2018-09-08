@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="adf80f92-8137-4d60-a5fe-4d92e3bfc1af" name="Default" comment="" />
+    <list default="true" id="adf80f92-8137-4d60-a5fe-4d92e3bfc1af" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" beforeDir="false" afterPath="$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +36,7 @@
         <entry file="file://$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
-              <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+              <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -81,9 +83,9 @@
         <option value="$PROJECT_DIR$/a) Simple_Linear_Regression_(Boston_Housing_Dataset).py" />
         <option value="$PROJECT_DIR$/Evaluating_Multiple_Classification_Models_(Titanic_Dataset).ipynb" />
         <option value="$PROJECT_DIR$/titanic_test.ipynb" />
-        <option value="$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" />
         <option value="$PROJECT_DIR$/spark_test.py" />
         <option value="$PROJECT_DIR$/ROC_test.py" />
+        <option value="$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" />
       </list>
     </option>
   </component>
@@ -400,7 +402,7 @@
     <entry file="file://$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+          <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
         </state>
       </provider>
     </entry>
