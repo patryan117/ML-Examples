@@ -21,9 +21,9 @@
 
 # TODO: Convert .py files to Jupyter notebook and replace on Github
 
-# TODO: fix chained indexing
+# TODO: fix chained indexing  (need to uses iloc or loc instead of chained bracket referencing)
 # TODO: Add plotly plots
-# TODO: Add ROC curve overlay for each classifier
+# TODO: Add ROC curve overlay for each classifier  (need model.decision function)
 # TODO: Create two different bar charts for test and train data (verify that the sss is creating identical test samples)
 # TODO: Add plotly barchart/gantt chart to show the timeit runtime for each model (optomized at its highest setting)
 
