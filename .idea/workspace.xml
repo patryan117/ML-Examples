@@ -35,8 +35,11 @@
       <file leaf-file-name="b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+            <state relative-caret-position="480">
+              <caret line="68" column="22" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
+              <folding>
+                <element signature="e#1498#1516#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -331,6 +334,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
           <caret line="49" column="42" lean-forward="true" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
+          <folding>
+            <element signature="e#1498#1516#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -401,8 +407,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+        <state relative-caret-position="480">
+          <caret line="68" column="22" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
+          <folding>
+            <element signature="e#1498#1516#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

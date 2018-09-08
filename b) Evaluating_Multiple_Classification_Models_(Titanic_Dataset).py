@@ -57,7 +57,6 @@ from sklearn.neural_network import MLPClassifier
 
 
 from itertools import cycle
-
 from sklearn import svm, datasets
 from sklearn.metrics import roc_curve, auc
 from sklearn.model_selection import train_test_split
