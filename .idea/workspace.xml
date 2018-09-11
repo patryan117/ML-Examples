@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="adf80f92-8137-4d60-a5fe-4d92e3bfc1af" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" beforeDir="false" afterPath="$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,8 +35,8 @@
       <file leaf-file-name="b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="132" lean-forward="true" selection-start-line="132" selection-end-line="132" />
+            <state relative-caret-position="272">
+              <caret line="126" selection-start-line="126" selection-end-line="126" />
               <folding>
                 <element signature="e#1498#1516#0" expanded="true" />
               </folding>
@@ -113,8 +113,9 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1905" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="795" />
+    <option name="y" value="830" />
     <option name="width" value="1950" />
     <option name="height" value="2075" />
   </component>
@@ -279,7 +280,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
+    <frame x="-6" y="-6" width="1549" height="837" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -419,8 +420,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="132" lean-forward="true" selection-start-line="132" selection-end-line="132" />
+        <state relative-caret-position="272">
+          <caret line="126" selection-start-line="126" selection-end-line="126" />
           <folding>
             <element signature="e#1498#1516#0" expanded="true" />
           </folding>
