@@ -133,8 +133,6 @@ dataset['Title'] = dataset['Title'].replace('Mme', 'Mrs')
 
 
 
-
-
 # Mapping Sex
 dataset['Sex'] = dataset['Sex'].map({'female': 0, 'male': 1}).astype(int)  # rename the sex feature with dummy variables (0 for female and 1 for male)
 
