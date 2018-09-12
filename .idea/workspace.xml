@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="adf80f92-8137-4d60-a5fe-4d92e3bfc1af" name="Default" comment="" />
+    <list default="true" id="adf80f92-8137-4d60-a5fe-4d92e3bfc1af" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" beforeDir="false" afterPath="$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +23,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="WordCount_Example.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WordCount_Example.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Spark-Examples/WordCount_Example.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -42,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="126" selection-start-line="126" selection-end-line="126" />
+            <state relative-caret-position="238">
+              <caret line="124" column="13" selection-start-line="124" selection-start-column="13" selection-end-line="124" selection-end-column="13" />
               <folding>
                 <element signature="e#1498#1516#0" expanded="true" />
               </folding>
@@ -110,8 +112,8 @@
         <option value="$PROJECT_DIR$/titanic_test.ipynb" />
         <option value="$PROJECT_DIR$/spark_test.py" />
         <option value="$PROJECT_DIR$/ROC_test.py" />
-        <option value="$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" />
         <option value="$PROJECT_DIR$/../Spark-Examples/WordCount_Example.py" />
+        <option value="$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" />
       </list>
     </option>
   </component>
@@ -422,16 +424,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="126" selection-start-line="126" selection-end-line="126" />
-          <folding>
-            <element signature="e#1498#1516#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/a) Simple_Linear_Regression_(Boston_Housing_Dataset).py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -445,6 +437,16 @@
           <caret column="8" selection-start-column="8" selection-end-column="8" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="124" column="13" selection-start-line="124" selection-start-column="13" selection-end-line="124" selection-end-column="13" />
+          <folding>
+            <element signature="e#1498#1516#0" expanded="true" />
           </folding>
         </state>
       </provider>
