@@ -125,7 +125,6 @@ def get_title(name):
         return ""  # else, return an empty string
 
 
-
 dataset['Title'] = dataset['Name'].apply(get_title)
 dataset['Title'] = dataset['Title'].replace(['Lady', 'Countess','Capt', 'Col', 'Don', 'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer', 'Dona'], 'Rare')     # replace the rare terms with the word "rare" in the title category
 dataset['Title'] = dataset['Title'].replace('Mlle', 'Miss')  # replace the misspelled titles   ( correct title can be confirmed via gender and table (e.g. Mlle and Mme both corespond to female gendered observations))
