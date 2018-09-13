@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="adf80f92-8137-4d60-a5fe-4d92e3bfc1af" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" beforeDir="false" afterPath="$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" afterDir="false" />
-    </list>
+    <list default="true" id="adf80f92-8137-4d60-a5fe-4d92e3bfc1af" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +42,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
@@ -52,6 +50,15 @@
               <folding>
                 <element signature="e#1498#1516#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="flights_example.py" pinned="false" current-in-tab="true">
+        <entry file="file://$USER_HOME$/Downloads/flights_example.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" lean-forward="true" selection-end-line="93" />
             </state>
           </provider>
         </entry>
@@ -448,6 +455,13 @@
           <folding>
             <element signature="e#1498#1516#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/flights_example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-end-line="93" />
         </state>
       </provider>
     </entry>
