@@ -117,6 +117,7 @@ dataset['CategoricalAge'] = pd.cut(dataset['Age'], 5)  # Create new feature of c
 # create a new function to extract title from a string runs that match "xxx. "string
 # group(1) allows us to access the actual string that we are targeting
 
+
 def get_title(name):
     title_search = re.search(' ([A-Za-z]+)\.', name)
     if title_search:	# If the title exists, extract and return it.
