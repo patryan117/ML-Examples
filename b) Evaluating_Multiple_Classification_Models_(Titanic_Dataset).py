@@ -29,8 +29,6 @@
 
 
 
-
-
 ##########################################################################################################
 # SETUP
 ##########################################################################################################
@@ -42,6 +40,7 @@ import pandas as pd
 import re as re
 import matplotlib.pyplot as plt
 import seaborn as sns
+import re
 
 import plotly
 import plotly.offline
