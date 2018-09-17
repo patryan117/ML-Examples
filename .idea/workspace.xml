@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="adf80f92-8137-4d60-a5fe-4d92e3bfc1af" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" beforeDir="false" afterPath="$PROJECT_DIR$/b) Evaluating_Multiple_Classification_Models_(Titanic_Dataset).py" afterDir="false" />
-    </list>
+    <list default="true" id="adf80f92-8137-4d60-a5fe-4d92e3bfc1af" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -129,7 +127,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="795" />
     <option name="y" value="830" />
     <option name="width" value="1950" />
@@ -296,7 +294,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
+    <frame x="-6" y="-6" width="1549" height="837" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
