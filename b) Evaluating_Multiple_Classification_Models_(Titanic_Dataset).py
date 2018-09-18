@@ -35,7 +35,7 @@
 
 
 # Load libraries:
-import numpy as np/;
+import numpy as np
 import pandas as pd
 import re as re
 import matplotlib.pyplot as plt
