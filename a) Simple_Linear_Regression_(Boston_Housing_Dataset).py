@@ -92,7 +92,7 @@ lm.fit(X_train, Y_train)
 Y_pred = lm.predict(X_test)
 
 
-# Create a scatterplot of the predicted prices vs actual prices
+# Create a scatterplot to display the relationship between predicted prices vs actual prices
 trace = go.Scatter(
     x = Y_test,
     y = Y_pred,
