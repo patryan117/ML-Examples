@@ -1,5 +1,5 @@
 # ML Intro
-   - a) Simple linear regression on (Boston Housing Dataset)
+   - a) Simple Linear Regression(Boston Housing Dataset)
    - b) Classifier Algorithm Comparison (Titanic Dataset)
    - c) Regression Algorithm Comparison (Extended Boston Housing Dataset) #TODO
    - d) Hand Writtin Digit Recognition (MNIST Dataset) #TODO
