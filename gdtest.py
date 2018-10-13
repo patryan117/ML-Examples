@@ -34,6 +34,9 @@ def readData(fileName, lowFilter, highFilter):
 
     ax = np.array(x)
     ay = np.array(y)
+    print(ax)
+    print(ay)
+
     return np.vstack((ax, ay))
 
 

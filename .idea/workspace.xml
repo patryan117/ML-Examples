@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="adf80f92-8137-4d60-a5fe-4d92e3bfc1af" name="Default" comment="" />
+    <list default="true" id="adf80f92-8137-4d60-a5fe-4d92e3bfc1af" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/gdtest.py" beforeDir="false" afterPath="$PROJECT_DIR$/gdtest.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,8 +14,9 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/ML_Intro$ML_Intro.coverage" NAME="ML-Intro Coverage Results" MODIFIED="1536193728111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/ML_Intro$ROC_test.coverage" NAME="ROC_test Coverage Results" MODIFIED="1536335272924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ML_Intro$a__Simple_Linear_Regression__Boston_Housing_Dataset_.coverage" NAME="a) Simple_Linear_Regression_(Boston_Housing_Dataset) Coverage Results" MODIFIED="1537278205467" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ML_Intro$a__Simple_Linear_Regression__Boston_Housing_Dataset_.coverage" NAME="a) Simple_Linear_Regression_(Boston_Housing_Dataset) Coverage Results" MODIFIED="1539448505331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ML_Intro$Evaluating_Multiple_ML_Models__Titanic_Dataset_.coverage" NAME="Evaluating_Multiple_ML_Models_(Titanic_Dataset) Coverage Results" MODIFIED="1536333990375" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ML_Intro$gradient.coverage" NAME="gradient Coverage Results" MODIFIED="1539450057458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
     <SUITE FILE_PATH="coverage/ML_Intro$linear_regression.coverage" NAME="linear_regression Coverage Results" MODIFIED="1535074091101" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ML_Intro$spark_test.coverage" NAME="spark_test Coverage Results" MODIFIED="1536335264026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -22,15 +25,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="WordCount_Example.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Spark-Examples/WordCount_Example.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="8" selection-start-column="8" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="a) Simple_Linear_Regression_(Boston_Housing_Dataset).py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/a) Simple_Linear_Regression_(Boston_Housing_Dataset).py">
           <provider selected="true" editor-type-id="text-editor">
@@ -90,14 +84,33 @@
       </file>
       <file leaf-file-name="gdtest.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gdtest.py">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+            </state>
+          </provider>
         </entry>
       </file>
-      <file leaf-file-name="gdtest.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="gdtest.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../gdtest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="85" column="49" selection-start-line="85" selection-start-column="49" selection-end-line="85" selection-end-column="49" />
+            <state relative-caret-position="119">
+              <caret line="7" lean-forward="true" selection-end-line="128" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gradient.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../gradient.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="21">
+              <caret line="30" column="41" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
+              <folding>
+                <element signature="e#2#39#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -107,18 +120,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
               <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ROC_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ROC_test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -141,6 +142,7 @@
       <find>ravel</find>
       <find>dec</find>
       <find>train</find>
+      <find>cost</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -163,6 +165,9 @@
         <option value="$PROJECT_DIR$/../Patrick_Ryan_CS777_Assignment_1/driver.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_5.py" />
         <option value="$PROJECT_DIR$/../gdtest.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_6.py" />
+        <option value="$PROJECT_DIR$/gdtest.py" />
+        <option value="$PROJECT_DIR$/../gradient.py" />
       </list>
     </option>
   </component>
@@ -175,7 +180,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="795" />
     <option name="y" value="830" />
     <option name="width" value="1950" />
@@ -202,6 +207,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -224,7 +230,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.a) Simple_Linear_Regression_(Boston_Housing_Dataset)">
+  <component name="RunManager" selected="Python.gradient">
     <configuration name="ML-Intro" type="JupiterNotebook" factoryName="Jupyter Notebook">
       <module name="ML-Intro" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -299,7 +305,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="linear_regression" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="gradient" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ML-Intro" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -307,12 +313,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\patry\OneDrive\Desktop\ML-Intro\a) Simple_Linear_Regression_(Boston_Housing_Dataset).py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../gradient.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -339,19 +345,19 @@
     </configuration>
     <list>
       <item itemvalue="Jupyter Notebook.ML-Intro" />
-      <item itemvalue="Python.linear_regression" />
       <item itemvalue="Python.Evaluating_Multiple_ML_Models_(Titanic_Dataset)" />
       <item itemvalue="Python.spark_test" />
       <item itemvalue="Python.ROC_test" />
       <item itemvalue="Python.a) Simple_Linear_Regression_(Boston_Housing_Dataset)" />
+      <item itemvalue="Python.gradient" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.gradient" />
         <item itemvalue="Python.a) Simple_Linear_Regression_(Boston_Housing_Dataset)" />
         <item itemvalue="Python.ROC_test" />
         <item itemvalue="Python.spark_test" />
         <item itemvalue="Python.Evaluating_Multiple_ML_Models_(Titanic_Dataset)" />
-        <item itemvalue="Python.linear_regression" />
       </list>
     </recent_temporary>
   </component>
@@ -377,8 +383,8 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3314367" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.0" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36273116" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32859176" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49898168" weight="0.14352784" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
@@ -423,6 +429,11 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../Spark-Examples/WordCount_Example.py">
@@ -671,13 +682,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gdtest.py">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_6.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/../gdtest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="85" column="49" selection-start-line="85" selection-start-column="49" selection-end-line="85" selection-end-column="49" />
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-end-line="128" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gdtest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gradient.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="30" column="41" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
+          <folding>
+            <element signature="e#2#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
