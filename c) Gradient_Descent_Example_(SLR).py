@@ -6,11 +6,6 @@ import numpy as np
 from numpy import *
 from scipy import stats
 
-
-# This is an implementation of Gradient Descent in python and numpy
-# Data set of this example
-
-
 def isfloat(value):
     try:
         float(value)
@@ -38,15 +33,13 @@ def readData(fileName, lowFilter, highFilter):
 
 
 def gradient_descent_run(points, m_current, b_current, learningRate, num_iteration, precision):
-    # m is the beta1
-    # b is the beta 0 or Y-Intercept
+
     X = points[0]
     Y = points[1]
     previous_step_size = 1
 
     N = float(len(Y))
     iters = 0
-    cost = 9999999999999999
 
     while (previous_step_size > precision and iters < num_iteration):
         y_current = (m_current * X) + b_current
@@ -55,17 +48,7 @@ def gradient_descent_run(points, m_current, b_current, learningRate, num_iterati
         m_gradient = -(2 / N) * sum(X * (Y - y_current))
         b_gradient = -(2 / N) * sum(Y - y_current)
         new_learingRate = learningRate
-        # in 1100 iteration
-        # but more costly due to cost funtion calculation
-        #
-        #		old_cost = cost
-        #		cost = sum([data**2 for data in (Y - y_current)]) / N
-        #		if(cost<old_cost):
-        #			new_learingRate=learningRate*1.05
-        #
-        #		if(cost>old_cost):
-        #			new_learingRate=learningRate*0.5
-
+       
         m_current = m_current - (new_learingRate * m_gradient)
         b_current = b_current - (new_learingRate * b_gradient)
 
@@ -85,7 +68,6 @@ def run(fileName):
     print("slope: ", slope)
     print("intercept: ", intercept)
 
-    # Gradient Descent
     starting_b = 0
     starting_m = 0
 
