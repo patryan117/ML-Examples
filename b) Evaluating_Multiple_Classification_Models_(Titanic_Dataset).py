@@ -1,5 +1,4 @@
 
-
 ##########################################################################################################
 # EVALUATING MULTIPLE MACHINE LEARNING MODELS ON THE TITANIC DATASET
 ##########################################################################################################
@@ -20,7 +19,6 @@
 
 
 # TODO: Convert .py files to Jupyter notebook and replace on Github
-
 # TODO: fix chained indexing  (need to uses iloc or loc instead of chained bracket referencing)
 # TODO: Add plotly plots
 # TODO: Add ROC curve overlay for each classifier  (need model.decision function)
@@ -61,7 +59,6 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticD
 from sklearn.linear_model import LogisticRegression
 from sklearn.neural_network import MLPClassifier
 
-
 from itertools import cycle
 from sklearn import svm, datasets
 from sklearn.metrics import roc_curve, auc
@@ -78,7 +75,6 @@ from scipy import interp
 
 # open csv train file as a pandas array (splitting will take place after feature engineering)
 dataset = pd.read_csv('datasets/train.csv', header = 0, dtype={'Age': np.float64})
-
 
 
 
@@ -116,7 +112,6 @@ dataset['CategoricalAge'] = pd.cut(dataset['Age'], 5)  # Create new feature of c
 # create a new function to extract title from a string runs that match "xxx. "string
 # group(1) allows us to access the actual string that we are targeting
 
-
 def get_title(name):
     title_search = re.search(' ([A-Za-z]+)\.', name)
     if title_search:	# If the title exists, extract and return it.
@@ -130,7 +125,6 @@ dataset['Title'] = dataset['Title'].replace(['Lady', 'Countess','Capt', 'Col', '
 dataset['Title'] = dataset['Title'].replace('Mlle', 'Miss')  # replace the misspelled titles   ( correct title can be confirmed via gender and table (e.g. Mlle and Mme both corespond to female gendered observations))
 dataset['Title'] = dataset['Title'].replace('Ms', 'Miss')
 dataset['Title'] = dataset['Title'].replace('Mme', 'Mrs')
-
 
 
 # Mapping Sex
@@ -170,21 +164,13 @@ dataset.loc[dataset['Age'] > 64, 'Age'] = 4
 
 
 
-# Feature Selection  #TODO: Consider showing correlation between each column and survival rate (to back up intuition)
-
+# Feature Selection
 drop_elements = ['PassengerId', 'Name', 'Ticket', 'Cabin', 'SibSp', 'Parch', 'FamilySize', 'CategoricalAge', 'CategoricalFare']
 train = dataset.drop(drop_elements, axis=1)
 train = train.values  # needs to be recast to allow slicing  (once done, train.values is inaccessible)
 
-# print(type(train))
-# print(train, "\n")
 
 
-
-
-
-
-# note: Parameters roughly optimized by hand
 
 classifiers = [
     KNeighborsClassifier(4),
@@ -204,7 +190,6 @@ classifiers = [
        nesterovs_momentum=True, power_t=0.5, random_state=1, shuffle=True,
        solver='lbfgs', tol=0.0001, validation_fraction=0.1, verbose=False,
        warm_start=False),
-
     ]
 
 
@@ -213,12 +198,8 @@ log_cols = ["Classifier", "Accuracy"]
 log = pd.DataFrame(columns=log_cols)   # create an empty df to populate
 sss = StratifiedShuffleSplit(n_splits=10, test_size=0.1, random_state=0) #create the sss object later to be used to split ( note that it doesnt take the sample as a parameter)
 
-
-# Convention Note: (use upper case letters ("X"/"Y") for matrices and lower case letters ("x"/"y") for vectors)
 X = train[0:, 1:]   # Assign everything but the first column to a matrix called X
 y = train[0:, 0]    # Assign the first column from the training dataset (i.e. survical boolean) to a vector called y
-
-
 acc_dict = {}  # dictinary to hold the accuracy of each classifier
 
 
@@ -254,3 +235,5 @@ plt.title('Classifier Accuracy')
 sns.set_color_codes("muted")
 sns.barplot(x='Accuracy', y='Classifier', data=log, color="b")
 plt.show()
+
+
