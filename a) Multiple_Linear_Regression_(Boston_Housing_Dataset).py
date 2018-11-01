@@ -12,8 +12,6 @@
 # SETUP
 ##########################################################################################################
 
-
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -24,18 +22,12 @@ import plotly.plotly as py
 import plotly.graph_objs as go
 import plotly.offline
 
+
 boston = load_boston()
-
 print(boston.keys())
-
 print(type(boston))
-# <class 'sklearn.utils.Bunch'>
-
 print(boston.data.shape)
-# 506 rows with 13 features per observation
-
 print(boston.feature_names)
-# 'CRIM' 'ZN' 'INDUS' 'CHAS' 'NOX' 'RM' 'AGE' 'DIS' 'RAD' 'TAX' 'PTRATIO'
 
 print(boston.DESCR)
 # - CRIM     per capita crime rate by town
@@ -52,6 +44,8 @@ print(boston.DESCR)
 # - B        1000(Bk - 0.63)^2 where Bk is the proportion of blacks by town
 # - LSTAT    % lower status of the population
 # - MEDV     Median value of owner-occupied homes in $1000's
+
+
 
 
 
@@ -77,6 +71,8 @@ print(X_train.shape)
 print(X_test.shape)
 print(Y_train.shape)
 print(Y_test.shape)
+
+
 
 
 ######################################################################################################################
@@ -136,10 +132,3 @@ print("Mean Square Error: {:.3f}".format(sklearn.metrics.mean_squared_error(Y_te
 print("Training Set Score: {:.3f}".format(lm.score(X_train, Y_train)))
 print("Training Set Score: {:.3f}".format(lm.score(X_test, Y_test)))
 
-
-
-# Notes:
-
-# Linear model has not input parameters, and only minimizes the mean square error
-# Linear models do particularly well on datasets with large feature counts.
-# We do not appear to be overfitting, so a regularized variant like Ridge or Lasso linear regression wont help.
