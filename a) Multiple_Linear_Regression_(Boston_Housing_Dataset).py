@@ -3,7 +3,7 @@
 
 
 ##########################################################################################################
-# SIMPLE LINEAR REGRESSION ON BOSTON HOUSING DATASET
+# MULTIPLE LINEAR REGRESSION ON BOSTON HOUSING DATASET
 ##########################################################################################################
 
 
@@ -141,5 +141,5 @@ print("Training Set Score: {:.3f}".format(lm.score(X_test, Y_test)))
 # Notes:
 
 # Linear model has not input parameters, and only minimizes the mean square error
-# Linear models do particularly well on datasets with large features.
+# Linear models do particularly well on datasets with large feature counts.
 # We do not appear to be overfitting, so a regularized variant like Ridge or Lasso linear regression wont help.
