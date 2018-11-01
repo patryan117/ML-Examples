@@ -118,7 +118,6 @@ layout= go.Layout(
 
 data = [trace]
 
-# Plot and embed in ipython notebook!
 fig= go.Figure(data=data, layout=layout)
 plotly.offline.plot(fig)
 
