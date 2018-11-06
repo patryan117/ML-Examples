@@ -6,7 +6,7 @@
 # Notes:
 # - This code demonstrates how to evaluate the performance of multi-classifier on Kaggle's infamous Titanic data set.
 
-# - Because Kaggle data sets are given as a pair of "train" (known y values) and "test" (unknown y values), we will
+# - Kaggle data sets are given as a pair of "train" (known y values) and "test" (unknown y values), so we will
 # sample out of test dataset, so that classifier accuracy can be asessed.
 
 # - This demo highlights the benefits of using Scikit-learn's shared model functions ("__name__, fit, predict)
