@@ -10,8 +10,7 @@ class LogisticRegression:
         self.lr = lr
         self.num_iter = num_iter
         self.fit_intercept = fit_intercept
-        self.verbose = verbose  #added by me
-
+        self.verbose = verbose  #add in
     def __add_intercept(self, X):
         intercept = np.ones((X.shape[0], 1))
         return np.concatenate((intercept, X), axis=1)
