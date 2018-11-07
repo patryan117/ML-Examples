@@ -91,31 +91,3 @@ if __name__ == "__main__":
 
 
 
-
-# learning Rate = 0.01
-# Iteration:  1200  Beta0 :   4.3509580481  Beta1 :  2.6376461370
-# ======== Final Results ==============
-# Data after filter:  (2, 1718496)
-# Beta0:  4.350962228020886
-# Beta1:  2.6376455350280423
-
-
-# # learning Rate = 0.001
-# Iteration:  10300  Beta0 :   4.3509000498  Beta1 :  2.6376544897
-# ======== Final Results ==============
-# Data after filter:  (2, 1718496)
-# Beta0:  4.350903391574003
-# Beta1:  2.6376540084537377
-
-
-# Doing the same linear Regression with R
-# R Results
-# taxi <- read.csv("/home/kia/Desktop/taxi-data-sorted-small.csv" , header = F)
-# taxi <-taxi[ which(taxi$V6 != 0 & taxi$V12 != 0 & taxi$V12 > 5 & taxi$V12 < 100), ]
-# lm(taxi$V12~taxi$V6)
-
-# Coefficients:
-# (Intercept)      taxi$V6
-#       4.351        2.638
-
-
