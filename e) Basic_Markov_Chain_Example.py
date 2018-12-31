@@ -2,6 +2,7 @@
 import numpy as np
 import random as rm
 
+###############################################################################
 
 states = ["Sleep","Icecream","Run"]
 transitionName = [["SS","SR","SI"],["RS","RR","RI"],["IS","IR","II"]] #  (ransitions)e.g. SS = sleep sleep
